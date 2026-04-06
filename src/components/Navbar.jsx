@@ -1,5 +1,9 @@
 import { useLang } from "../context/LangContext";
 
+const scrollTo = (id) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+};
+
 export default function Navbar() {
   const { lang, toggle, t } = useLang();
 
@@ -20,13 +24,24 @@ export default function Navbar() {
         borderBottom: "1px solid var(--border)",
       }}
     >
-      <a href="#">
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          document.documentElement.scrollIntoView({ behavior: "smooth" });
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        style={{
+          textDecoration: "none",
+          transition: "opacity 0.2s",
+        }}
+      >
         <img
-          src="NicoRojasId.png"
-          style={{
-            width: "40px",
-          }}
-        ></img>
+          src="/NicoRojasId.png"
+          alt="NROJAS.DEV"
+          style={{ height: "40px" }}
+        />
       </a>
 
       {/* Links — ocultos en mobile */}
@@ -39,24 +54,32 @@ export default function Navbar() {
           fontSize: "0.85rem",
         }}
       >
-        <a
-          href="#stack"
-          style={{ color: "var(--muted)", textDecoration: "none" }}
-        >
-          {t.nav.stack}
-        </a>
-        <a
-          href="#projects"
-          style={{ color: "var(--muted)", textDecoration: "none" }}
-        >
-          {t.nav.projects}
-        </a>
-        <a
-          href="#contact"
-          style={{ color: "var(--muted)", textDecoration: "none" }}
-        >
-          {t.nav.contact}
-        </a>
+        {[
+          { id: "stack", label: t.nav.stack },
+          { id: "projects", label: t.nav.projects },
+          { id: "contact", label: t.nav.contact },
+        ].map(({ id, label }) => (
+          <button
+            key={id}
+            onClick={() => scrollTo(id)}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.color = "var(--accent)")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+            style={{
+              background: "none",
+              border: "none",
+              color: "var(--muted)",
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.85rem",
+              padding: 0,
+              letterSpacing: "inherit",
+              transition: "color 0.2s",
+            }}
+          >
+            {label}
+          </button>
+        ))}
       </div>
 
       <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
@@ -69,7 +92,6 @@ export default function Navbar() {
             background: "transparent",
             border: "1px solid var(--border)",
             color: "var(--muted)",
-            cursor: "none",
             letterSpacing: "0.05em",
             transition: "border-color 0.2s, color 0.2s",
           }}

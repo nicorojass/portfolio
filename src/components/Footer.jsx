@@ -15,12 +15,25 @@ export default function Footer() {
         color: "var(--muted)",
       }}
     >
-      <img
-        style={{
-          width: "40px",
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          document.documentElement.scrollIntoView({ behavior: "smooth" });
         }}
-        src="NicoRojasId.png"
-      ></img>
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        style={{
+          textDecoration: "none",
+          transition: "opacity 0.2s",
+        }}
+      >
+        <img
+          src="/NicoRojasId.png"
+          alt="NROJAS.DEV"
+          style={{ height: "40px" }}
+        />
+      </a>
       <div style={{ display: "flex", gap: "2rem" }}>
         <a
           href="https://github.com/nicorojass"
