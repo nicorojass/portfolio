@@ -24,6 +24,8 @@ const stack = [
   { icon: SiSwagger, label: "Swagger", sub: "Documentation" },
 ];
 
+const isMobile = window.matchMedia("(hover: none)").matches;
+
 export default function TechStack() {
   const { t } = useLang();
 
@@ -78,14 +80,22 @@ export default function TechStack() {
               gap: "0.75rem",
               transition: "border-color 0.15s ease, transform 0.15s ease",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "var(--accent)";
-              e.currentTarget.style.transform = "scale(1.02)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--border)";
-              e.currentTarget.style.transform = "scale(1)";
-            }}
+            onMouseEnter={
+              isMobile
+                ? undefined
+                : (e) => {
+                    e.currentTarget.style.borderColor = "var(--accent)";
+                    e.currentTarget.style.transform = "scale(1.02)";
+                  }
+            }
+            onMouseLeave={
+              isMobile
+                ? undefined
+                : (e) => {
+                    e.currentTarget.style.borderColor = "var(--border)";
+                    e.currentTarget.style.transform = "scale(1)";
+                  }
+            }
           >
             <Icon size={28} color="var(--accent)" />
             <div>

@@ -17,7 +17,7 @@ export const translations = {
     },
     stack: {
       label: "STACK.GET_ALL_RESOURCES()",
-      title: "TECH STACK",
+      title: "TECHNOLOGY STACK",
     },
     projects: {
       label: "FEATURED_DEPLOYMENTS.LOG",
@@ -81,7 +81,7 @@ export const translations = {
     },
     stack: {
       label: "STACK.OBTENER_RECURSOS()",
-      title: "TECH STACK",
+      title: "TECHNOLOGY STACK",
     },
     projects: {
       label: "DESPLIEGUES_DESTACADOS.LOG",

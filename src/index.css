@@ -54,6 +54,11 @@ body {
   footer > div {
     gap: 1.5rem !important;
   }
+
+  #stack .motion-div,
+  #stack > div > div {
+    border: none !important;
+  }
 }
 
 @media (max-width: 768px) {
