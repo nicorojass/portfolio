@@ -10,7 +10,6 @@ import Footer from "./components/Footer";
 export default function App() {
   return (
     <LangProvider>
-      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
