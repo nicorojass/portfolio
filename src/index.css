@@ -8,10 +8,6 @@
   padding: 0;
 }
 
-* {
-  cursor: none;
-}
-
 :root {
   --bg: #0d0d0d;
   --surface: #1a1a1a;
