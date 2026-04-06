@@ -20,19 +20,14 @@ export default function Navbar() {
         borderBottom: "1px solid var(--border)",
       }}
     >
-      <a
-        href="#"
-        style={{
-          fontFamily: "var(--font-mono)",
-          fontWeight: 700,
-          letterSpacing: "0.1em",
-          textDecoration: "none",
-          color: "var(--text)",
-        }}
-      >
-        NROJAS.DEV
+      <a href="#">
+        <img
+          style={{
+            width: "50px",
+          }}
+          src="/NicoRojasId.png"
+        ></img>
       </a>
-
       <div
         style={{
           display: "flex",

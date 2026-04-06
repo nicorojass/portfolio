@@ -15,7 +15,12 @@ export default function Footer() {
         color: "var(--muted)",
       }}
     >
-      <span>NROJAS.DEV</span>
+      <img
+        style={{
+          width: "40px",
+        }}
+        src="NicoRojasId.png"
+      ></img>
       <div style={{ display: "flex", gap: "2rem" }}>
         <a
           href="https://github.com/nicorojass"
