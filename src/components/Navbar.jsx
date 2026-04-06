@@ -22,13 +22,16 @@ export default function Navbar() {
     >
       <a href="#">
         <img
+          src="NicoRojasId.png"
           style={{
-            width: "50px",
+            width: "40px",
           }}
-          src="/NicoRojasId.png"
         ></img>
       </a>
+
+      {/* Links — ocultos en mobile */}
       <div
+        className="nav-links"
         style={{
           display: "flex",
           gap: "2rem",
@@ -82,7 +85,9 @@ export default function Navbar() {
           {lang === "en" ? "ES" : "EN"}
         </button>
 
+        {/* RESUME — oculto en mobile */}
         <a
+          className="nav-resume"
           href="/cv.pdf"
           download
           style={{
