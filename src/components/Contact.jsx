@@ -4,14 +4,21 @@ import { useLang } from "../context/LangContext";
 
 export default function Contact() {
   const { t } = useLang();
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", message: "" });
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = () => {
-    const mailto = `mailto:nicoorojas1@gmail.com?subject=Contacto desde portfolio - ${form.name}&body=${form.message} (${form.email})`;
-    window.open(mailto);
+    const numero = "5492235401196"; // tu número con código de país sin + ni espacios
+    const mensaje = `Hola Nicolás, te contacto desde tu portfolio.
+  
+    Nombre: ${form.name}
+  
+    ${form.message}`;
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -92,29 +99,28 @@ export default function Contact() {
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        {[
-          { name: "name", placeholder: t.contact.name, type: "text" },
-          { name: "email", placeholder: t.contact.email, type: "email" },
-        ].map(({ name, placeholder, type }) => (
-          <input
-            key={name}
-            type={type}
-            name={name}
-            placeholder={placeholder}
-            value={form[name]}
-            onChange={handleChange}
-            style={{
-              backgroundColor: "var(--surface)",
-              border: "1px solid var(--border)",
-              color: "var(--text)",
-              padding: "0.85rem 1rem",
-              fontFamily: "var(--font-mono)",
-              fontSize: "0.85rem",
-              outline: "none",
-              width: "100%",
-            }}
-          />
-        ))}
+        {[{ name: "name", placeholder: t.contact.name, type: "text" }].map(
+          ({ name, placeholder, type }) => (
+            <input
+              key={name}
+              type={type}
+              name={name}
+              placeholder={placeholder}
+              value={form[name]}
+              onChange={handleChange}
+              style={{
+                backgroundColor: "var(--surface)",
+                border: "1px solid var(--border)",
+                color: "var(--text)",
+                padding: "0.85rem 1rem",
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.85rem",
+                outline: "none",
+                width: "100%",
+              }}
+            />
+          )
+        )}
 
         <textarea
           name="message"
@@ -146,9 +152,10 @@ export default function Contact() {
             fontSize: "0.85rem",
             fontWeight: 700,
             letterSpacing: "0.1em",
-            cursor: "none",
             width: "100%",
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
           {t.contact.button}
         </button>
